@@ -59,10 +59,10 @@ By the final review, this README should clearly show:
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
 | `[Ananya]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[]` |
+| `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[Sequencing Logic,Integration,Systems Thinking]` |
 
 ## 1.3 Project Title
-`[Enter the title of your project]`
+'Candy Circuit`
 
 ## 1.4 One-Line Pitch
 `[Describe your project in one sentence]`
@@ -101,7 +101,10 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`[Write here]`
+`The experience is a small, tactile exchange where a person takes a simple action and receives a small treat as a response. It is designed as a playful, hands-on moment rather than just a machine transaction, so the experience feels more like an interaction than a purchase.
+The participant should feel curious, amused, and rewarded. The goal is to create a light sense of anticipation before the treat arrives, followed by a small burst of satisfaction when it does.
+Someone would want to try it again because the experience is quick, easy, and pleasantly repetitive. The combination of curiosity, control, and instant reward makes it feel enjoyable each time, almost like a tiny game they can return to.
+`
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +112,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`[Write here]`
+`We are designing this project as if we are a small creative studio making a playable object for mixed audience.`
 
 ---
 
