@@ -52,14 +52,14 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-`[Group 13]`
+`Group 13`
 
 ## 1.2 Team Members
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `[Ananya]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `[Zoya]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
+| `Ananya` | `Electronics` | `Coding` | `Hardware wiring, component testing` |
+| `Zoya` | `Coding ` | `Electronics` | `MicroPython logic, system integration` |
 
 ## 1.3 Project Title
 `[Enter the title of your project]`
