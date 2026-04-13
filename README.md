@@ -59,7 +59,7 @@ By the final review, this README should clearly show:
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
 | `[Ananya]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[Write here]` |
+| `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[]` |
 
 ## 1.3 Project Title
 `[Enter the title of your project]`
