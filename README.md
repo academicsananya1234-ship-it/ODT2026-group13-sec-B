@@ -144,37 +144,37 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+`insert token → IR sensor detects token → LED turns on → stepper motor rotates dispensing wheel → servo flap opens → candy drops → servo flap closes → LED turns off → app counter updates → system resets and waits for next token`
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
-| Is explanation required before use? | `[Write here]` |
+| Who is this for? | `Classmates, exhibition visitors, anyone who enjoys interactive machines` |
+| Age range | `10+` |
+| Solo or multiplayer | `Solo (one coin at a time)` |
+| Expected duration of one round | `~5 seconds per dispense cycle` |
+| What should the player feel? | `Delight, satisfaction, mild anticipation` |
+| Is explanation required before use? | `Minimal — a "Insert coin here" label is enough` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
-7. **Reset:** `[How does the next round begin?]`
+1. **Approach:** `The player sees the brightly designed candy machine with visible gumballs, lights, and a token slot that invites interaction`
+2. **Start:** `The player receives or picks up an MDF token and stands in front of the machine.`
+3. **First Action:** `The player inserts the token into the slot at the top of the machine.`
+4. **Main Interaction:** `The token travels through the chute, triggering the sensor and activating the dispensing mechanism. The player watches the machine process the token and release the candy.`
+5. **System Response:** `The LED lights up, the stepper motor rotates the candy wheel, the servo flap opens, and one candy drops into the collection tray.`
+6. **Win / Lose / End Condition:** `One round ends once the player successfully receives their candy. If the token is not detected or the candy jams, the round pauses until the issue is resolved.`
+7. **Reset:** `The machine automatically resets after dispensing, with the LED turning off and the system returning to standby, ready for the next token.`
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- `One coin triggers one candy dispense cycle.`
+- `The machine will not dispense if no candy is loaded in the chute.`
+- `Only one token can be inserted at a time.`
+- `Players must not shake, force, or manually open the machine.`
 
 ---
 
@@ -183,24 +183,23 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [ ] `The IR sensor reliably detects each inserted MDF token.`
+- [ ] `The servo flap opens and closes smoothly without jamming.`
+- [ ] `The LED provides clear feedback during machine operation.`
+- [ ] `The full token-to-candy interaction works consistently for multiple rounds.`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+`A basic working candy machine that accepts one MDF token, detects it using the IR sensor, activates the stepper motor to rotate the candy wheel, opens the servo flap, and successfully dispenses one candy. The machine should reset automatically and be ready for the next token.`
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
-- `[Stretch feature 2]`
-- `[Stretch feature 3]`
+- `Bluetooth / app-based candy counter or token tracking`
+- `Sound effects or voice prompts during dispensing`
+- `Decorative lights or animations to make the experience more playful`
 
 ---
 
