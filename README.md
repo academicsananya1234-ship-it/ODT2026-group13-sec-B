@@ -416,7 +416,8 @@ Suggested sequence:
 - error handling.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/zoya---branch/images/code_flowchart.jpg <img width="1367" height="3700" alt="code_flowchart" src="https://github.com/user-attachments/assets/a967f372-5711-43b3-983b-c127b7237159" />
+`
 
 ## 10.4 Pseudocode
 
