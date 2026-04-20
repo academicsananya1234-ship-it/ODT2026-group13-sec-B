@@ -15,7 +15,7 @@
 ## Fork and rename this repository
 After forking this repository, rename it using the format:
 
-`ODT-2026-TeamName`
+`ODT-2026-Team13_Ananya_and_Zoya`
 
 ### Example
 `ODT-2026-PixelWizards`
@@ -62,10 +62,10 @@ By the final review, this README should clearly show:
 | `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[Sequencing Logic,Integration,Systems Thinking]` |
 
 ## 1.3 Project Title
-'Candy Circuit`
+'Psychedelicacy`
 
 ## 1.4 One-Line Pitch
-`[Describe your project in one sentence]`
+`Card-operated dispenser that detects card swipe via IR sensor, flashes pink loading lights, then swings servo flap open with green confirmation to dispense candy.`
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
@@ -75,7 +75,9 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`[Write here]`
+`Psychedelicacy is a playful card-activated dispenser that lights up and swings open to release a surprise treat when you swipe a card past an IR sensor.It captures that exciting "did it work?" moment as the pink lights chase around,building anticipation before green floods in and the flap swings open to drop your treat creating a simple, responsive, and surprisingly addictive moment.
+
+What makes it fun is the playful rhythm: the quick sensor ping, the glowing buildup, and that satisfying servo whirr delivering instant payoff.Each swipe feels like a mini game with reliable magic, sparking curiosity for "one more go." It's powered by an IR sensor for detection,NeoPixel LEDs for vibrant feedback and a servo for smooth delivery of the treat.`
 
 ---
 
@@ -101,9 +103,9 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`The experience is a small, tactile exchange where a person takes a simple action and receives a small treat as a response. It is designed as a playful, hands-on moment rather than just a machine transaction, so the experience feels more like an interaction than a purchase.
-The participant should feel curious, amused, and rewarded. The goal is to create a light sense of anticipation before the treat arrives, followed by a small burst of satisfaction when it does.
-Someone would want to try it again because the experience is quick, easy, and pleasantly repetitive. The combination of curiosity, control, and instant reward makes it feel enjoyable each time, almost like a tiny game they can return to.
+`The experience is a small, tactile exchange where a person takes a simple action and receives a small treat as a response.It is designed as a playful, hands-on moment rather than just a machine transaction, so the experience feels more like an interaction than a purchase.
+The participant should feel curious, amused and rewarded. The goal is to create a light sense of anticipation before the treat arrives, followed by a small burst of satisfaction when it does.
+Someone would want to try it again because the experience is quick, easy, and pleasantly repetitive.The combination of curiosity, control and instant reward makes it feel enjoyable each time, almost like a tiny game they can return to.
 `
 
 ## 2.3 Design Persona
@@ -123,15 +125,15 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| `Object` | `Vending machine card reader` | `Simple swipe detection creating  "contactless" activation` |
+| `Toy` | `Gumball machines	` | `Variable timing builds emotional investment while linear file advances automatically into rotating scoop; copied this for candies naturally sliding into quarter-circle "trap" on servo return which is based on gravity.` |
+| `Toy` | `Pez dispensers` | `Head rotates 90° to capture candy from vertical stack, then back releases exactly one; taught how a  quarter-circle depth positioning naturally meters single candies` |
 
 ## 3.2 Original Twist
 What makes your project original?
 
 **Response:**  
-`[Write here]`
+`The dispensing mechanism draws from the PEZ dispenser's single-file candy stacking and the revolver cylinder's rotary chamber logic, but reimagines both in a new way,a quarter-circle servo-driven cavity that uses gravity and hole depth to release exactly one candy per trigger, without springs or complex mechanical parts.Combined with an IR-based card swipe replacing a traditional coin slot, the entire system achieves touchless, one-at-a-time dispensing using just a servo and a sensor , making it simpler, cheaper and more hygienic than any existing consumer dispenser design.`
 
 ---
 
@@ -147,34 +149,34 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+`swipe card → IR detects → pink lights animation → green flash + servo dispenses/rotates → servo flap resets + lights off → repeat`
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
-| Is explanation required before use? | `[Write here]` |
+| Who is this for? | `Anyone craving a quick hit of playful delight from everyday spaces-Impulse-driven kids in malls,arcade enthusiasts` |
+| Age range | `Age-inclusive - 4 - 60` |
+| Solo or multiplayer | `Solo` |
+| Expected duration of one round | `4–5 seconds `|
+| What should the player feel? | `Enchanting "just one more" compulsion` |
+| Is explanation required before use? | `No,intuitive "swipe = reward" can be discovered with the help of card slot placement at the front` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
-7. **Reset:** `[How does the next round begin?]`
+1. **Approach:** `Notices glowing NeoPixels and queued candies in a desk-sized dispenser`
+2. **Start:** `Spots IR sensor slot labeled "Swipe card here →"`
+3. **First Action:** `Swipes the card - kept there`
+4. **Main Interaction:** `Watches pink "loading" lights chase around ring during 1-second anticipation build`
+5. **System Response:** `Green flood lights and servo whirr as quarter-circle pocket rotates 90°, dropping exactly one candy through hole`
+6. **Win / Lose / End Condition:** `Not applicable - Candy falls out always`
+7. **Reset:** `Flap smoothly returns to 0°, lights turn off, sensor immediately ready for new cycle`
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
+- `Not applicable`
 - `[Rule 2]`
 - `[Rule 3]`
 - `[Rule 4]`
