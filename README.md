@@ -58,7 +58,7 @@ By the final review, this README should clearly show:
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `[Ananya]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
+| Ananya | Electronics & Wiring | Code Troubleshooting | Strong debugging skills, quickly identified and fixed issues in wiring and code, handled failures under pressure, and ensured reliable system integration |
 | `[Zoya]` | `[Coding / App / Fabrication / Mechanics]` | `[Electronics ]` | `[]` |
 
 ## 1.3 Project Title
@@ -321,47 +321,56 @@ If your project includes mechanical motion, document the digital planning before
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-| `[Fusion 360 / Tinkercad / other]` | `[Link or screenshot]` | `[What did you validate?]` |
-| `[Tool]` | `[Link or screenshot]` | `[What did you validate?]` |
+| `FIGMA` | `https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/MECHANICAL%20SERVO%20MOVEMENT.png` | `whether the movement of the servo would be smooth enough to dispense the candy` |
 
 ## 8.5 Changes After Digital Testing
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-`[Write here]`
+`We adjusted the size of the axis accordingly to facilitate the movement of the servo motor`
 
 ---
-
 # 9. Electronics Planning
 
 ## 9.1 Electronics Used
 
 | Component | Quantity | Purpose |
 |---|---:|---|
-| `[ESP32]` | `1` | `[Main controller]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| ESP32 | 1 | Main controller |
+| IR Sensor Module | 1 | Detects CARD insertion |
+| NeoPixel Ring (16 LEDs) | 1 | Visual feedback (loading + dispensing) |
+| Servo Motor (SG90 or similar) | 1 | Opens and closes dispensing flap |
+| External 5V Power Supply | 1 | Powers servo, NeoPixel, and IR sensor |
+| Jumper Wires | Multiple | Electrical connections |
+
+---
 
 ## 9.2 Wiring Plan
-Describe the main electrical connections.
 
 **Response:**  
-`[Write here]`
+The ESP32 acts as the central controller. The IR sensor output pin is connected to GPIO 34 (input-only pin) to detect coin insertion. The NeoPixel ring data input (DIN) is connected to GPIO 2 to control LED animations. The servo motor signal wire is connected to GPIO 5 for controlling flap movement.
+
+All components (servo motor, NeoPixel ring, and IR sensor) are powered using an external 5V supply to ensure stable operation and avoid overloading the ESP32. A common ground is maintained by connecting the ground of the power supply to the ESP32 ground and all components.
+
+---
 
 ## 9.3 Circuit Diagram
-Insert a hand-drawn or software-made circuit diagram.
 
 **Insert image below:**  
-`[Upload image and link here]`
+
+https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/CIRCUIT%20DIAGRAM.png
+
+
+---
 
 ## 9.4 Power Plan
 
 | Question | Response |
 |---|---|
-| Power source | `[USB / battery / adapter / other]` |
-| Voltage required | `[Write here]` |
-| Current concerns | `[Write here]` |
-| Safety concerns | `[Write here]` |
+| Power source | External 5V adapter |
+| Voltage required | 5V |
+| Current concerns | Servo motor and NeoPixel can draw high current, so external power is required instead of ESP32 5V pin |
+| Safety concerns | Ensure correct polarity, avoid short circuits, and maintain common ground between ESP32 and power supply |
 
 ---
 
@@ -462,89 +471,112 @@ Insert a sketch or screenshot of the app interface.
 
 ## 12.1 Full BOM
 
-| Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
+| Item | Quantity | In Kit? | Need to Buy? | Estimated Cost (₹) | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
+| ESP32 | 1 | Yes | No | 0 | WiFi + Bluetooth MCU | Compact, powerful, supports MicroPython |
+| ESP32 (Replacement) | 1 | No | Yes | 510 | Same as above | Backup after original board failed |
+| IR Sensor Module | 1 | Yes | No | 0 | Infrared obstacle sensor | Simple, fast coin detection |
+| NeoPixel Ring (16 LEDs) | 1 | No | Yes | 250 | WS2812B LEDs | Programmable lighting feedback |
+| Servo Motor (SG90) | 1 | Yes | No | 0 | 180° micro servo | Precise flap control |
+| External 5V Power Supply | 1 | No | Yes | 200 | 5V 2A adapter | Stable power for servo + LEDs |
+| Jumper Wires | ~20 | Yes | No | 0 | Male-Female wires | Easy prototyping |
+| Breadboard | 1 | Yes | No | 0 | Standard | Circuit setup |
+| Foam Board | 1 | Yes (college) | No | 0 | Lightweight board | Structure building |
+| Tape & Glue | - | No | Yes | 100 | Adhesives | Assembly support |
+| Candy | - | No | Yes | 100 | Consumable | Final output (dispensing item) |
+
+---
 
 ## 12.2 Material Justification
-Explain why you selected your main materials and components.
-
-Examples:
-- Why acrylic instead of cardboard?
-- Why MDF instead of 3D print?
-- Why servo instead of DC motor?
-- Why bearing instead of a plain shaft hole?
 
 **Response:**  
-`[Write here]`
+The ESP32 was selected due to its compact size, strong processing capability, and compatibility with MicroPython, making it ideal for rapid prototyping. An IR sensor is used instead of a physical switch for coin detection because it allows contactless sensing and faster response.
+
+A servo motor is chosen over a DC motor because it provides precise angle control, which is essential for reliably opening and closing the dispensing flap. The NeoPixel ring is preferred over standard LEDs as it allows individually addressable lighting effects, enhancing user interaction and visual feedback.
+
+An external 5V power supply is used instead of powering directly from the ESP32 to prevent voltage instability, especially since the servo motor and LEDs require higher current.
+
+Foam board was used for the structure as it is lightweight, easy to cut, and readily available. Adhesives like tape and glue help in quick assembly without requiring complex tools.
+
+---
 
 ## 12.3 Items to Purchase Separately
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
+| Foam Board | Used for building outer structure (taken from college) | N/A | Already acquired | Received |
+| ESP32 (Replacement) | First ESP32 got damaged, needed backup | Local electronics store | Immediate | Purchased |
+| Tape & Glue | Assembly and structural support | Local store | Immediate | Purchased |
+| Candy | Dispensing item for final output | Local store | Before testing/demo | Purchased |
+
+---
 
 ## 12.4 Budget Summary
 
-| Budget Item | Estimated Cost |
+| Budget Item | Estimated Cost (₹) |
 |---|---:|
-| Electronics | `[Cost]` |
-| Mechanical parts | `[Cost]` |
-| Fabrication materials | `[Cost]` |
-| Purchased extras | `[Cost]` |
-| Contingency | `[Cost]` |
-| **Total** | `[Cost]` |
+| Electronics | 960 |
+| Mechanical parts | 0 |
+| Fabrication materials | 100 |
+| Purchased extras | 100 |
+| Contingency | 100 |
+| **Total** | **1260** |
+
+---
 
 ## 12.5 Budget Reflection
-If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-`[Write here]`
+The overall cost increased due to the replacement of the ESP32, which was an unplanned expense. If cost reduction is required, the NeoPixel ring can be replaced with standard LEDs, significantly lowering expenses. The structure can be made entirely using recycled materials to reduce fabrication costs.
+
+Additionally, components like power supplies and adhesives can be reused from existing resources. Proper handling of components can also help avoid damage-related costs in future iterations.
 
 ---
 
 # 13. Planning the Work
 
 ## 13.1 Team Working Agreement
-Write how your team will work together.
-
-Include:
-- how tasks are divided,
-- how decisions are made,
-- how progress will be checked,
-- what happens if a task is delayed,
-- how documentation will be maintained.
 
 **Response:**  
-`[Write here]`
+
+Tasks were divided based on individual strengths while allowing flexibility to support each other when needed. Ananya primarily handled electronics, wiring, troubleshooting, fabrication files, and documentation, while Zoya focused on concept development, coding, mechanical design, and system integration.
+
+Decisions were made collaboratively, especially during major design changes such as shifting from the rotary mechanism to the servo-based flap system. Testing results and practical constraints guided most decisions.
+
+Progress was checked through regular build and testing sessions, where both team members reviewed functionality and identified issues.
+
+If a task was delayed, priorities were adjusted to focus on core functionality first. Non-essential features were deprioritized to ensure a working prototype within the deadline.
+
+Documentation was maintained throughout the process, with updates added after key stages including prototyping, testing, and iteration.
+
+---
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | `[Finalize concept]` | `[Name]` | `2` | `[Date]` | `None` | `To Do` |
-| T2 | `[Complete BOM]` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | `[Test electronics]` | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
-| T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
-| T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
-| T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
-| T7 | `[Playtest]` | `[Name]` | `2` | `[Date]` | `T6` | `To Do` |
-| T8 | `[Refine and document]` | `[Name]` | `3` | `[Date]` | `T7` | `To Do` |
+| T1 | Finalize concept | Zoya | 2 | Week 1 | None | Completed |
+| T2 | Complete BOM | Ananya | 1 | Week 1 | T1 | Completed |
+| T3 | Test electronics | Ananya | 3 | Week 2 | T1 | Completed |
+| T4 | Build structure | Zoya | 5 | Week 2 | T1 | Completed |
+| T5 | Write control code | Zoya | 5 | Week 3 | T3 | Completed |
+| T6 | Integrate system | Zoya | 4 | Week 3 | T4, T5 | Completed |
+| T7 | Playtest | Ananya | 2 | Week 4 | T6 | Completed |
+| T8 | Refine and document | Ananya | 4 | Week 4 | T7 | Completed |
+
+---
 
 ## 13.3 Responsibility Split
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept and gameplay | `[Name]` | `[Name]` |
-| Electronics | `[Name]` | `[Name]` |
-| Coding | `[Name]` | `[Name]` |
-| App | `[Name]` | `[Name]` |
-| Mechanical build | `[Name]` | `[Name]` |
-| Testing | `[Name]` | `[Name]` |
-| Documentation | `[Name]` | `[Name]` |
+| Concept and gameplay | Zoya | Ananya |
+| Electronics | Ananya | Zoya |
+| Coding | Zoya | Ananya |
+| App | Zoya | Ananya |
+| Mechanical build | Zoya | Ananya |
+| Testing | Ananya | Zoya |
+| Documentation | Ananya | Zoya |
 
 ---
 
@@ -603,87 +635,153 @@ Expected outcomes:
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| `[Example: Bluetooth disconnects]` | `Technical` | `Medium` | `High` | `[Fallback interaction / simplify connection flow]` | `[Name]` |
-| `[Example: Structure breaks during play]` | `Mechanical` | `Medium` | `High` | `[Reinforce joints / change material]` | `[Name]` |
-| `[Risk]` | `[Technical / Material / Time / Gameplay]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
-| `[Risk]` | `[Type]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
+| ESP32 failure or overheating | Technical | Medium | High | Keep backup ESP32, avoid powering high-load components from board | Ananya and Zoya |
+| IR sensor false triggering / not detecting coin | Technical | Medium | Medium | Add delay + double-check logic in code, adjust sensor positioning | Ananya |
+| Servo jitter or inconsistent movement | Technical | Medium | Medium | Use external power, stop PWM after movement (already implemented) | Zoya |
+| NeoPixel not working properly | Technical | Low | Medium | Check data pin, ensure proper voltage and ground connection | Ananya |
+| Weak structure (foam board bending or breaking) | Material | Medium | Medium | Reinforce with extra layers, tape, and glue | Zoya |
+| Wiring becoming loose during demo | Mechanical | Medium | High | Secure connections with tape, minimize movement | Ananya |
+| Power supply issues (insufficient current) | Technical | Medium | High | Use 5V 2A adapter, test under full load before demo | Zoya |
+| Time constraints before submission/demo | Time | High | High | Prioritize core functionality over aesthetics | Zoya |
+
+---
 
 ## 15.2 Biggest Unknown Right Now
-What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-`[Write here]`
-
+The biggest uncertainty is the reliability of the IR sensor in consistently detecting coins under real-world conditions. Factors such as ambient light, positioning, and speed of insertion may affect detection accuracy. Ensuring stable and repeatable performance during the final demonstration remains the key concern.
 ---
 
 # 16. Testing and Playtesting
 
 ## 16.1 Technical Testing Plan
 
-| What Needs Testing | How You Will Test It | Success Condition |
-|---|---|---|
-| `[Bluetooth connection]` | `[Method]` | `[What counts as success?]` |
-| `[Mechanism movement]` | `[Method]` | `[What counts as success?]` |
-| `[Sensor behavior]` | `[Method]` | `[What counts as success?]` |
-| `[App communication]` | `[Method]` | `[What counts as success?]` |
+| What Needs Testing              | How You Will Test It                                                          | Success Condition                                                        |
+| ------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| IR Sensor detection             | Drop MDF tokens / swipe card multiple times at different speeds and distances | Sensor detects input consistently (≥90% accuracy) without false triggers |
+| Mechanism movement (servo flap) | Run repeated cycles (10–20 times) and observe flap opening/closing            | Flap opens fully, releases exactly one candy, and closes without jamming |
+| Candy flow in tube              | Load multiple candies and observe dispensing over multiple cycles             | Candies move smoothly in single file and do not jam or double-drop       |
+| LED / NeoPixel response         | Trigger system repeatedly and observe light feedback                          | LED turns on immediately upon detection and turns off after dispensing   |
+| Power stability                 | Run system continuously for extended time (5–10 minutes)                      | No overheating, shutdown, or inconsistent behavior                       |
+| Wiring reliability              | Slightly move wires during operation to test loose connections                | System continues functioning without interruption                        |
+
+---
 
 ## 16.2 Playtesting Plan
 
-| Question | How You Will Check |
-|---|---|
-| Do players understand what to do? | `[Method]` |
-| Is the interaction satisfying? | `[Method]` |
-| Do players want another turn? | `[Method]` |
-| Is the challenge balanced? | `[Method]` |
-| Is the response clear and immediate? | `[Method]` |
+| Question                             | How You Will Check                                                                                |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Do players understand what to do?    | Observe first-time users without instructions and see if they insert the token/card correctly     |
+| Is the interaction satisfying?       | Ask users for feedback after using it and observe reactions to candy drop                         |
+| Do players want another turn?        | Check if users immediately try again or ask for more tokens                                       |
+| Is the challenge balanced?           | Not applicable — this is not a competitive game, but interaction should feel smooth and rewarding |
+| Is the response clear and immediate? | Observe if users notice LED feedback and understand that the system is working                    |
+
+---
 
 ## 16.3 Testing and Debugging Log
 
-| Date | Problem Found | Type | What You Tried | Result | Next Action |
-|---|---|---|---|---|---|
-| `[Date]` | `[Describe issue]` | `[Technical / Mechanical / UI / Gameplay]` | `[What you did]` | `[Worked / Partly / Failed]` | `[Next step]` |
-| `[Date]` | `[Describe issue]` | `[Type]` | `[What you did]` | `[Result]` | `[Next step]` |
+| Date   | Problem Found                                | Type       | What You Tried                                | Result        | Next Action                   |
+| ------ | -------------------------------------------- | ---------- | --------------------------------------------- | ------------- | ----------------------------- |
+| Week 1 | IR sensor not detecting coins reliably       | Technical  | Tested with different coins                   | Failed        | Switched to MDF tokens        |
+| Week 1 | MDF tokens not detected consistently         | Technical  | Slowed down drop, adjusted sensor sensitivity | Partly worked | Considered redesign of input  |
+| Week 2 | Rotary wheel not dispensing properly         | Mechanical | Increased height of wheel                     | Failed        | Modified pocket size          |
+| Week 2 | Multiple candies dispensing                  | Mechanical | Reduced pocket size and adjusted rotation     | Failed        | Identified flow control issue |
+| Week 2 | Candy jamming in wheel                       | Mechanical | Adjusted alignment and spacing                | Failed        | Scrapped rotary mechanism     |
+| Week 3 | ESP32 stopped working (possible power issue) | Technical  | Replaced ESP32                                | Worked        | Improve power handling        |
+| Week 3 | IR sensor failed mid-build                   | Technical  | Replaced sensor                               | Worked        | Keep backup components        |
+| Week 3 | NeoPixel not working                         | Technical  | Re-soldered connections                       | Worked        | Improve soldering stability   |
+| Week 4 | Candy dispensing inconsistent                | Mechanical | Switched to vertical tube + servo flap        | Worked        | Finalize system               |
+| Week 4 | Power supply instability                     | Technical  | Changed power source                          | Worked        | Monitor voltage stability     |
+
+---
 
 ## 16.4 Playtesting Notes
 
-| Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
-|---|---|---|---|---|
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
-
+| Tester      | What They Did                | What Confused Them                              | What They Enjoyed                                 | What You Will Change                         |
+| ----------- | ---------------------------- | ----------------------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| Classmate 1 | Inserted token and waited    | Slight confusion about where to insert token    | Enjoyed candy drop moment                         | Make input slot more visible                 |
+| Classmate 2 | Tried multiple times quickly | Didn’t realize system needs one-at-a-time input | Found LED feedback helpful                        | Add clearer visual feedback / delay          |
+| Friend      | Used system independently    | Initially unsure if system was working          | Found interaction satisfying and wanted to repeat | Improve response speed clarity               |
+| Peer        | Observed mechanism           | Curious about internal working                  | Liked seeing moving parts                         | Add transparent section / clearer visibility |
 ---
 
 # 17. Build Documentation
 
 ## 17.1 Fabrication Process
-Describe how the project was physically made.
-
-Include:
-- cutting,
-- 3D printing,
-- assembly,
-- fastening,
-- wiring,
-- finishing,
-- revisions.
 
 **Response:**  
-`[Write here]`
+
+The project was developed through multiple iterations, starting from basic prototyping and progressing toward a reliable final system.
+
+**Cutting & Structure:**  
+The outer body of the dispenser was constructed using foam board. The material was manually cut using a precision cutter to create panels, openings for the input slot, and an output section for candy dispensing. The lightweight nature of foam board allowed for quick modifications during testing.
+
+**Initial Mechanism (Rotary – Failed Iteration):**  
+The first design used a rotary wheel mechanism intended to dispense candies one at a time. Circular components and compartments were cut and assembled. However, this system faced multiple issues including candy jamming, inconsistent rotation, and multiple candies dispensing at once. Due to repeated failures, this design was abandoned.
+
+**Revised Mechanism (Final – Vertical Tube + Servo Flap):**  
+The final mechanism used a vertical tube system where candies are stacked in a straight column. A servo-controlled flap at the bottom regulates dispensing. This design ensured that only one candy is released per cycle and significantly improved reliability.
+
+**Assembly & Fastening:**  
+All structural elements were assembled using tape and glue. Additional reinforcement was added at joints and edges to maintain rigidity and prevent deformation during use.
+
+**Electronics & Wiring:**  
+The ESP32 microcontroller was used as the central control unit. The IR sensor was connected to detect coin/token insertion. A NeoPixel ring was used to provide visual feedback, and a servo motor controlled the dispensing flap. All components were wired using jumper wires on a breadboard. An external 5V power supply was used to ensure stable operation and prevent overloading the ESP32. A common ground connection was maintained across all components.
+
+**Testing & Iteration:**  
+The system was tested at each stage of development. Issues such as sensor inconsistency, servo jitter, and unstable power supply were identified and resolved through both hardware adjustments and code improvements. Failed approaches were documented and used to guide design decisions.
+
+**Finishing:**  
+In the final stage, the structure was cleaned and stabilized. Loose wires were secured, alignment was corrected, and the system was prepared for demonstration. The final build focuses on functionality, clarity of interaction, and reliability.
+
+---
 
 ## 17.2 Build Photos
-Add photos throughout the project.
+
+Add photos throughout the project to document the process and iterations.
 
 Suggested images:
-- early sketch,
-- prototype,
-- electronics testing,
-- mechanism test,
-- app screenshot,
-- final build.
+- early sketch  
+- prototype  
+- electronics testing  
+- mechanism test  
+- final build  
+
+Example:
+
+```md
+![Early Sketch](./images/sketch.jpg)
+![Prototype](./images/prototype.jpg)
+![Electronics Testing](./images/electronics.jpg)
+![Mechanism Test](./images/mechanism.jpg)
+![Final Build](./images/final.jpg)
 
 Example:
 ```md
+## 17.2 Build Photos
 
+![Prototype Sketches](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01prototype%20sketches%20.jpeg)
+
+![Build Image 1](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01WhatsApp%20Image%202026-04-20%20at%2020.05.06.jpeg)
+
+![Build Image 2](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01WhatsApp%20Image%202026-04-20%20at%2020.05.06%20(5).jpeg)
+
+![Build Image 3](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01WhatsApp%20Image%202026-04-20%20at%2020.05.06%20(4).jpeg)
+
+![Build Image 4](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01WhatsApp%20Image%202026-04-20%20at%2020.05.06%20(3).jpeg)
+
+![Build Image 5](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/01WhatsApp%20Image%202026-04-20%20at%2020.05.06%20(2).jpeg)
+
+![Rotary Wheel](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/rotary%20wheel.jpeg)
+
+![MDF Cut](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/mdf%20cut.jpeg)
+
+![Funnels](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/funnels.jpeg)
+
+![D-Day Setup](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/dday%20set%20up.jpeg)
+
+![Chart Paper Cover](https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/ANANYA-new-branch/images/chart%20paper%20cover.jpeg)
 
 
 ```
@@ -692,101 +790,138 @@ Example:
 
 | Version | Date | What Changed | Why |
 |---|---|---|---|
-| `v1` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v2` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v3` | `[Date]` | `[Describe]` | `[Reason]` |
-
+| v1 | Week 1 | Initial concept with IR sensor + rotary dispensing mechanism | To explore automated candy dispensing |
+| v2 | Week 2 | Modified rotary wheel size and candy compartments | To fix jamming and multiple candy drops |
+| v3 | Week 3 | Replaced faulty ESP32 and IR sensor | Hardware failure during testing |
+| v4 | Week 4 | Switched to vertical tube + servo flap mechanism | Improve reliability and single-candy dispensing |
+| v5 | Week 4 | Stabilized power supply and secured wiring | Ensure consistent performance for final demo |
 ---
-
 # 18. Final Outcome
 
 ## 18.1 Final Description
-Describe the final version of your project.
 
 **Response:**  
-`[Write here]`
+
+The final project's an interactive candy dispensing system controlled by an ESP32. The system detects the insertion of a token or object using an IR sensor and responds with visual feedback through a NeoPixel LED ring. Once triggered, a servo motor activates a flap mechanism that releases a single candy from a vertically stacked tube.
+
+The interaction's simple and intuitive: the user inserts a token, receives immediate visual feedback, and's rewarded with a candy. The system's powered using an external 5V supply to ensure stable operation of all components.
+
+The final design focuses on reliability, clarity of interaction, and a satisfying user experience, with a working mechanism that consistently dispenses one candy per input.
+
+---
 
 ## 18.2 What Works Well
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+
+- Reliable single-candy dispensing using the servo flap mechanism  
+- Clear visual feedback through NeoPixel LEDs  
+- Stable performance due to external power supply  
+- Simple and intuitive user interaction  
+- Compact and functional overall structure  
+
+---
 
 ## 18.3 What Still Needs Improvement
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+
+- IR sensor detection could be more consistent in different lighting conditions  
+- Physical structure (foam board) could be more durable and refined  
+- Wiring could be cleaner and more secure for long-term use  
+- Response time between input and output could be slightly faster  
+
+---
 
 ## 18.4 What Changed From the Original Plan
-How did the project change from the initial idea?
 
 **Response:**  
-`[Write here]`
+
+The original plan involved using a rotary wheel mechanism to dispense candies. However, this approach led to several issues such as jamming, inconsistent dispensing, and multiple candies being released at once. After multiple failed iterations, the mechanism was redesigned.
+
+The final system uses a vertical tube with a servo-controlled flap, which proved to be significantly more reliable and easier to control. Additionally, adjustments were made to the power system by introducing an external power supply after encountering instability with the ESP32.
+
+Overall, the project's evolved from a more complex mechanical system to a simpler, more efficient design that prioritizes reliability and user experience.
 
 ---
 
 # 19. Reflection
 
 ## 19.1 Team Reflection
-What did your team do well?  
-What slowed you down?  
-How well did you manage time, tasks, and responsibilities?
 
 **Response:**  
-`[Write here]`
+
+The team worked well in terms of adapting quickly to problems and continuing progress despite multiple technical failures. There was a strong focus on finding solutions rather than getting stuck on what wasn't working. Responsibilities were handled flexibly, with tasks being taken up based on urgency rather than strict roles.
+
+However, the project was slowed down by repeated hardware issues, including component failures and unreliable sensor behavior. Time management became more reactive than planned, with a significant portion of time spent troubleshooting instead of progressing steadily.
+
+Overall, while the execution phase faced challenges, the team managed to deliver a working prototype by prioritizing core functionality and making practical decisions under time constraints.
+
+---
 
 ## 19.2 Technical Reflection
-What did you learn about:
-- electronics,
-- coding,
-- mechanisms,
-- fabrication,
-- integration?
 
 **Response:**  
-`[Write here]`
+
+This project provided hands-on learning across multiple technical areas.
+
+In electronics, the importance of proper power management became very clear, especially when dealing with components like servos and LEDs that require stable current. The need for a common ground and external power supply was a key takeaway.
+
+In coding, working with MicroPython helped in understanding how to structure logic for real-time interactions, including handling sensor input, delays, and sequential actions.
+
+In terms of mechanisms, the project highlighted the difference between theoretical ideas and practical execution. The initial rotary mechanism seemed viable but failed under real conditions, reinforcing the importance of simplicity and reliability.
+
+Fabrication involved working with foam board and basic tools, which required precision and adaptability. Small alignment errors had noticeable effects on performance.
+
+Integration was one of the biggest learnings — combining electronics, code, and physical design into a single working system required constant iteration and problem-solving.
+
+---
 
 ## 19.3 Design Reflection
-What did you learn about:
-- designing for play,
-- delight,
-- clarity,
-- physical interaction,
-- player understanding,
-- iteration?
 
 **Response:**  
-`[Write here]`
+
+The project reinforced the importance of designing for clarity and immediate understanding. Users should be able to interact with the system without needing instructions, which influenced decisions around input placement and feedback.
+
+Designing for delight was explored through the use of NeoPixel LEDs and the satisfying moment of candy dispensing. Small feedback elements significantly improved the overall experience.
+
+Physical interaction played a major role, as the success of the system depended on how naturally users could engage with it. Observing users during testing helped identify confusion points and areas for improvement.
+
+Iteration proved to be essential. Initial ideas that seemed strong did not always work in practice, and multiple redesigns were necessary to arrive at a functional solution.
+
+---
 
 ## 19.4 If You Had One More Week
-What would you improve next?
 
 **Response:**  
-`[Write here]`
+
+With an additional week, the focus would be on refining both the physical and interaction aspects of the project. The structure would be rebuilt using a more durable material such as MDF or acrylic to improve stability and finish.
+
+The sensor system could be improved for more reliable detection, potentially by adjusting placement or exploring alternative sensing methods. Wiring would be cleaned and secured more professionally to improve robustness.
+
+The interaction could also be enhanced by reducing response delay and adding clearer feedback cues. Additional visual or auditory elements could further improve user engagement.
+
+Overall, the next iteration would focus on polish, durability, and improving the consistency of the user experience.
 
 ---
 
 # 20. Final Submission Checklist
 
 Before submission, confirm that:
-- [ ] Team details are complete
-- [ ] Project description is complete
-- [ ] Inspiration sources are included
-- [ ] Player journey is written
-- [ ] Sketches are added
-- [ ] BOM is complete
-- [ ] Purchase list is complete
-- [ ] Budget summary is complete
-- [ ] Mechanical planning is documented if applicable
-- [ ] App planning is documented if applicable
-- [ ] Code flowchart is added
-- [ ] Task breakdown is complete
-- [ ] Weekly logs are updated
-- [ ] Risk register is complete
-- [ ] Testing log is updated
-- [ ] Playtesting notes are included
-- [ ] Build photos are included
-- [ ] Final reflection is written
-
+- [x] Team details are complete
+- [x] Project description is complete
+- [x] Inspiration sources are included
+- [x] Player journey is written
+- [x] Sketches are added
+- [x] BOM is complete
+- [x] Purchase list is complete
+- [x] Budget summary is complete
+- [x] Mechanical planning is documented if applicable
+- [x] App planning is documented if applicable
+- [x] Code flowchart is added
+- [x] Task breakdown is complete
+- [x] Weekly logs are updated
+- [x] Risk register is complete
+- [x] Testing log is updated
+- [x] Playtesting notes are included
+- [x] Build photos are included
+- [x] Final reflection is written
 ---
 
 # 21. Suggested Repository Structure
