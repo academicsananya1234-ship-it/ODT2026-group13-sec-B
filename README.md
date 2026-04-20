@@ -74,7 +74,7 @@ In 1–2 paragraphs, explain:
 - what makes it fun, curious, engaging, strange, satisfying, competitive, or delightful,
 - what technologies are involved.
 
-**Response:**  
+**Response:**
 `Psychedelicacy is a playful card-activated dispenser that lights up and swings open to release a surprise treat when you swipe a card past an IR sensor.It captures that exciting "did it work?" moment as the pink lights chase around,building anticipation before green floods in and the flap swings open to drop your treat creating a simple, responsive, and surprisingly addictive moment.
 
 What makes it fun is the playful rhythm: the quick sensor ping, the glowing buildup, and that satisfying servo whirr delivering instant payoff.Each swipe feels like a mini game with reliable magic, sparking curiosity for "one more go." It's powered by an IR sensor for detection,NeoPixel LEDs for vibrant feedback and a servo for smooth delivery of the treat.`
@@ -177,9 +177,9 @@ Describe exactly how a player will use the project.
 If your project is a game, list the rules clearly.
 
 - `Not applicable`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- `Not applicable`
+- `Not applicable`
+- `Not applicable`
 
 ---
 
@@ -188,24 +188,24 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [1] `Card swipe reliably triggers-any card past IR sensor consistently detects within 2cm`
+- [1] `Exactly one candy per activation-quarter-circle servo pocket releases single candy every time`
+- [1] `Full light show executes-pink loading animation (1s) → green dispense → lights off, all NeoPixels respond instantly without flicker`
+- [1] `Smooth mechanical reset-servo returns to 0° position after every dispense, ready for next swipe within 4 seconds total cycle`
+- [1] `Runs continuous cycles without sensor false triggers, motor stall or LED failure`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+`IR sensor detecting motion → single LED blinks → servo rotates 90° to drop one candy → returns to load next`
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
-- `[Stretch feature 2]`
-- `[Stretch feature 3]`
+- `Sound effects-  buzzers play jingle or  chime during pink lights, "ka-ching" on dispense`
+- `Candy counter display- small screen shows "Candies left: 23" to build urgency as hopper empties`
+- `Wireless tally- Bluetooth to phone app tracks swipes or phone motion is used to dispense candy`
 
 ---
 
@@ -214,17 +214,17 @@ What features are nice to have but not essential?
 ## 6.1 Project Type
 Check all that apply.
 
-- [ ] Electronics-based
-- [ ] Mechanical
-- [ ] Sensor-based
+- [1] Electronics-based
+- [1] Mechanical
+- [1] Sensor-based
 - [ ] App-connected
-- [ ] Motorized
+- [1] Motorized
 - [ ] Sound-based
-- [ ] Light-based
+- [1] Light-based
 - [ ] Screen/UI-based
-- [ ] Fabricated structure
+- [1] Fabricated structure
 - [ ] Game logic based
-- [ ] Installation / tabletop experience
+- [1] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
 ## 6.2 High-Level System Description
@@ -238,16 +238,21 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`[Write here]`
+`Input: Card swipes break the IR sensor beam (Pin 34 detects proximity/motion).
+Processing: ESP32 microcontroller confirms detection with 50ms debounce, then triggers light sequence and servo motion.
+Output:
+NeoPixel ring (16 LEDs, Pin 2): Pink chasing animation (1s loading) → green flood (dispensing)
+Servo motor (Pin 5): Quarter-circle pocket rotates 0°→90°→0° to release exactly one candy
+Physical structure: Linear candy queue feeds into deep quarter-circle servo pocket—gravity naturally loads next candy when flap returns to home position.`
 
 ## 6.3 Input / Output Map
 
 | System Part | Type | What It Does |
 |---|---|---|
-| `[Button / Sensor / Switch / App Input]` | Input | `[Describe]` |
-| `[ESP32 / Controller]` | Processing | `[Describe]` |
-| `[LED / Motor / Servo / Buzzer / Display]` | Output | `[Describe]` |
-| `[Mechanical Assembly]` | Physical Action | `[Describe]` |
+| ` Sensor` | Input | `IR sensor detects card swipe by beam interruption` |
+| `[ESP32 ` | Processing | `Reads sensor → double-checks signal → runs light sequence → controls servo timing → loops for next activation` |
+| `[LED / Servo ` | Output | `Neopixel-Pink chasing animation (loading feedback) → green flood (dispensing confirmation) → off (ready state)/Rotates quarter-circle pocket 0°→90°→0° to scoop and release exactly one candy from queue` |
+| `Quarter-circle Candy Pocket` | Physical Action | `Deep pocket traps single candy by geometry; gravity auto-refills from linear queue on return to 0°` |
 
 ---
 
