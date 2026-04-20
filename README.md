@@ -76,7 +76,6 @@ In 1–2 paragraphs, explain:
 
 **Response:**
 `Psychedelicacy is a playful card-activated dispenser that lights up and swings open to release a surprise treat when you swipe a card past an IR sensor.It captures that exciting "did it work?" moment as the pink lights chase around,building anticipation before green floods in and the flap swings open to drop your treat creating a simple, responsive, and surprisingly addictive moment.
-
 What makes it fun is the playful rhythm: the quick sensor ping, the glowing buildup, and that satisfying servo whirr delivering instant payoff.Each swipe feels like a mini game with reliable magic, sparking curiosity for "one more go." It's powered by an IR sensor for detection,NeoPixel LEDs for vibrant feedback and a servo for smooth delivery of the treat.`
 
 ---
@@ -262,7 +261,7 @@ Physical structure: Linear candy queue feeds into deep quarter-circle servo pock
 Add an early sketch of the full idea.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/zoya---branch/images/concept-sketch.jpg`
 
 Example:
 ```md
