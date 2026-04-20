@@ -620,46 +620,46 @@ Include:
 
 ### Week 1 — Plan and De-risk
 Expected outcomes:
-- [ ] Idea finalized
+- [1] Idea finalized
 - [ ] Core interaction decided
-- [ ] Sketches made
+- [1] Sketches made
 - [ ] BOM completed
-- [ ] Purchase needs identified
-- [ ] Key uncertainty identified
-- [ ] Basic feasibility tested
+- [1] Purchase needs identified
+- [1] Key uncertainty identified
+- [1] Basic feasibility tested
 
 ### Week 2 — Build Subsystems
 Expected outcomes:
-- [ ] Electronics tests completed
+- [1] Electronics tests completed
 - [ ] CAD / structure planning completed
-- [ ] App UI started if needed
-- [ ] Mechanical concept tested
-- [ ] Main subsystems partially working
+- [1] App UI started if needed
+- [1] Mechanical concept tested
+- [1] Main subsystems partially working
 
 ### Week 3 — Integrate
 Expected outcomes:
-- [ ] Physical body built
-- [ ] Electronics integrated
-- [ ] Code connected to hardware
+- [1] Physical body built
+- [1] Electronics integrated
+- [1] Code connected to hardware
 - [ ] App connected if required
-- [ ] First playable version exists
+- [1] First playable version exists
 
 ### Week 4 — Refine and Finish
 Expected outcomes:
-- [ ] Technical bugs reduced
-- [ ] Playtesting completed
-- [ ] Improvements made
-- [ ] Documentation completed
-- [ ] Final build ready
+- [1] Technical bugs reduced
+- [1] Playtesting completed
+- [1] Improvements made
+- [1] Documentation completed
+- [1] Final build ready
 
 ## 14.2 Weekly Update Log
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 3 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 4 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | `Finalize idea, sketches, BOM, identify risks, test feasibility` | `decided, rough sketches made, materials like foamboard/MDF identified, basic servo + sensor testing done` | `BOM not fully completed in first week, shifted focus to testing mechanism first` | `Complete BOM and finalize dispensing mechanism dimensions` |
+| Week 2 | `Build subsystems, test electronics, start app UI as backup, structure planning` | `physical hand-built structure chosen` | `physical hand-built structure chosen` | `Build outer body and improve subsystem wiring` |
+| Week 3 | `Integrate body, electronics, code, first working prototype` | `Foamboard/MDF body built, electronics mounted, code linked with servo + sensor, first working candy dispenser achieved-rotating disc` | `App connection kept optional backup i` | `Improve stability, candy flow, and user experience` |
+| Week 4 | `test users, improve design, complete documentation` | `changed candy mechanism completely,Servo vibration reduced, dispensing timing improved, playtested with users, report and presentation completed` | `focused more on physical aspects` | `Prepare final demo and polish aesthetics` |
 
 ---
 
