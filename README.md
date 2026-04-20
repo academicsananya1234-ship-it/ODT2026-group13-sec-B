@@ -513,14 +513,14 @@ Examples:
 Insert a sketch or screenshot of the app interface.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/zoya---branch/images/credit-app_screen.png`
 
 ## 11.5 App Screen Flow
 
-1. `[Step 1]`
-2. `[Step 2]`
-3. `[Step 3]`
-4. `[Step 4]`
+1. `Open the app and tap the Bluetooth Connect button to pair with the ESP32 candy dispenser.`
+2. `Check current credit balance.`
+3. `Tap Add Credit (₹1 / ₹2 buttons) or Reset to manage balance.`
+4. `Press Send to transfer the credit value to the dispenser and activate candy dispensing.`
 
 ---
 
