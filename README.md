@@ -390,17 +390,31 @@ Include:
 - reset behavior.
 
 **Response:**  
-`When the machine is powered on, the ESP32 starts by setting all components to their default positions. The servo flap closes, the stepper motor is turned off, and the NeoPixel LEDs flash pink and green to show the system has started correctly. After this, the machine stays in idle mode and waits for a coin.
+` To create a card-operated dispensing mechanism using an IR sensor, servo motor, and NeoPixel LEDs-  It detects a card, shows visual feedback, and actuates a flap to dispense an item.
 
-The main input is the IR sensor placed in the coin slot. It constantly checks if a coin passes through and breaks the infrared beam. A short delay is added to confirm the reading and reduce false triggers from movement or sensor noise.
+Startup Behavior
+Positions the servo flap to 0° and turns off NeoPixels. Flashes the first NeoPixel pink then green twice, then prints "Ready. Waiting for coin..." to the console.
 
-If the sensor detects a valid coin, the ESP32 starts the dispensing sequence. First, the NeoPixel LEDs run a pink loading animation to show that the machine is processing the input. Then the stepper motor rotates 90° to move one section of the candy wheel into position and release one candy portion.
+Input Handling
+Monitors the IR sensor continuously in the main loop with a 50ms wait time.
 
-After the wheel turns, the servo motor opens the flap so the candy can fall into the collection tray. It stays open briefly, then closes again.
+Sensor Reading
+The card_detected() function reads Pin 34 (IR sensor). It confirms detection with a 50ms debounce if the value is 0.
 
-The ESP32 also sends simple messages to the serial monitor such as “Ready”, “Coin detected”, and “Done”. This is useful during testing and troubleshooting.
+Decision Logic
+Triggers dispensing only on confirmed card detection. There isnt multiple card handling—single detection per cycle.
 
-Once dispensing is complete, the system resets itself automatically. The flap returns to the closed position, the motor stops, LEDs turn off, and the machine goes back to waiting for the next coin.`
+Output Behavior
+NeoPixels : Pink chasing animation during 1-second "loading," green fill during servo action, then off.
+
+Servo : Moves 0° → 90° → 0° to open/close flap, using PWM at 50Hz with auto-deinit to stop vibration.
+Prints "Coin detected!" and "Done. Ready for next coin." to console after each cycle.
+
+Communication Logic
+Console-only via print() statements for status.
+
+Reset Behavior
+After dispensing, waits 1 second, turns off lights, and loops back to sensor waiting for the next card swipe. Servo always returns to 0° post-dispense.`
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
