@@ -394,8 +394,8 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython / Arduino / MIT App Inventor / CAD tool / other]` | `[Purpose]` |
-| `[Tool]` | `[Purpose]` |
+| `MicroPython` | `Main firmware on ESP32 for IR sensor reading, NeoPixel control, servo PWM timing, and main interaction loop` |
+| `MIT App Inventor` | `Backup block-based prototyping for coin/card detection logic and servo control testing during development` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -410,29 +410,21 @@ Include:
 - reset behavior.
 
 **Response:**  
-` To create a card-operated dispensing mechanism using an IR sensor, servo motor, and NeoPixel LEDs-  It detects a card, shows visual feedback, and actuates a flap to dispense an item.
-
+`To create a card-operated dispensing mechanism using an IR sensor, servo motor, and NeoPixel LEDs-  It detects a card, shows visual feedback, and actuates a flap to dispense an item.
 Startup Behavior
 Positions the servo flap to 0° and turns off NeoPixels. Flashes the first NeoPixel pink then green twice, then prints "Ready. Waiting for coin..." to the console.
-
 Input Handling
 Monitors the IR sensor continuously in the main loop with a 50ms wait time.
-
 Sensor Reading
 The card_detected() function reads Pin 34 (IR sensor). It confirms detection with a 50ms debounce if the value is 0.
-
 Decision Logic
 Triggers dispensing only on confirmed card detection. There isnt multiple card handling—single detection per cycle.
-
 Output Behavior
 NeoPixels : Pink chasing animation during 1-second "loading," green fill during servo action, then off.
-
 Servo : Moves 0° → 90° → 0° to open/close flap, using PWM at 50Hz with auto-deinit to stop vibration.
 Prints "Coin detected!" and "Done. Ready for next coin." to console after each cycle.
-
 Communication Logic
 Console-only via print() statements for status.
-
 Reset Behavior
 After dispensing, waits 1 second, turns off lights, and loops back to sensor waiting for the next card swipe. Servo always returns to 0° post-dispense.`
 
@@ -456,7 +448,33 @@ Suggested sequence:
 ## 10.4 Pseudocode
 
 ```text
-[Write your pseudocode here]
+STARTUP:
+    servo_move(0°)          // Position pocket to load candy
+    flash NeoPixel pink+green 2x  // Welcome animation
+    PRINT "Ready for card swipe"
+
+MAIN LOOP FOREVER:
+    READ IR sensor (Pin 34)
+    
+    IF sensor == LOW:
+        WAIT 50ms                 // Debounce delay
+        IF sensor STILL LOW:
+            PRINT "Card detected!"
+            
+            // PROCESSING PHASE
+            pink_loading_animation(1000ms)   // Pink chase effect
+            
+            // DISPENSE PHASE  
+            green_fill_neopixels()         // Success lights
+            servo_move(0°, 300ms)          // Settle home
+            servo_move(90°, 800ms)         // Dump candy
+            servo_move(0°, 500ms)          // Reload next candy
+            
+            neopixel_off()
+            PRINT "Candy dispensed!"
+            WAIT 1000ms                   // Brief pause
+    
+    WAIT 50ms                     
 ```
 
 ---
@@ -464,7 +482,7 @@ Suggested sequence:
 # 11. MIT App Inventor Plan
 
 ## 11.1 Is an app part of this project?
-- [ ] Yes
+- [1] Yes
 - [ ] No
 
 If yes, complete this section.
@@ -481,15 +499,15 @@ Examples:
 - displaying data.
 
 **Response:**  
-`[Write here]`
+`The app acts as a backup payment and control system when the physical card/coin mechanism is unavailable or fails. It adds convenience by allowing users to add digital credit, reset balance, and send commands directly from their phone, making the candy dispenser more accessible, reliable, and interactive.`
 
 ## 11.3 App Features
 
 | Feature | Purpose |
 |---|---|
-| `[Bluetooth connect button]` | `[Purpose]` |
-| `[Score display]` | `[Purpose]` |
-| `[Control button / slider / label]` | `[Purpose]` |
+| `Bluetooth connect button` | `Connects the mobile app to the ESP32 dispenser wirelessly for communication and control.` |
+| `Credit / Score display` | `Shows the current balance or available credits added by the user.` |
+| `Add Credit button/ Reset button/Send button` | `Increases digital credit balance for candy dispensing./Clears the current credit and sets the balance back to zero./Sends the updated credit value or command to the dispenser system.` |
 
 ## 11.4 UI Mockup
 Insert a sketch or screenshot of the app interface.
