@@ -278,16 +278,16 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-`[Upload image and link here]`
+`https://github.com/academicsananya1234-ship-it/ODT2026-group13-sec-B/blob/zoya---branch/images/labelled_build_sketch.jpg`
 
 ## 7.3 Approximate Dimensions
 
 | Dimension | Value |
 |---|---|
-| Length | `[Write here]` |
-| Width | `[Write here]` |
-| Height | `[Write here]` |
-| Estimated weight | `[Write here]` |
+| Length | `35cm` |
+| Width | `35cm` |
+| Height | `32cm` |
+| Estimated weight | `850g` |
 
 ---
 
