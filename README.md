@@ -296,16 +296,16 @@ Add a sketch with labels showing:
 ## 8.1 Mechanical Features
 Check all that apply.
 
-- [ ] Gears
+- [1] Gears
 - [ ] Pulleys
 - [ ] Belt drives
 - [ ] Linkages
-- [ ] Hinges
-- [ ] Shafts
+- [1] Hinges
+- [1] Shafts
 - [ ] Springs
 - [ ] Bearings
 - [ ] Wheels
-- [ ] Sliders
+- [1] Sliders
 - [ ] Levers
 - [ ] Not applicable
 
@@ -313,7 +313,7 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`[Write here]`
+`Gear shaft on servo drives quarter-circle pocket as single-index metering chamber-linear candy queue gravity-feeds into deep pocket arc. Servo rotates exactly 90° via hinge mount, sliding card guide aligns pocket hole with exit chute to release trapped candy. Return to 0° naturally scoops next candy from queue via pocket depth geometry + slider mechanism. Pure rotational scoop and gravity reload for reliable single-dispensing.`
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -324,7 +324,20 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-`[Write here]`
+`What moves: Quarter-circle candy pocket attached to servo horn
+What causes movement: ESP32 triggers PWM signal to servo motor (Pin 5, 50Hz) after IR sensor confirms card swipe
+How far it moves:0° (home, candy loading) → 90° (dispense, hole aligned with chute) → 0° (reset)
+Total: 180° per cycle (90° out + 90° back)
+How fast it moves:
+settle_ms=300ms at 0° (gentle start)
+settle_ms=800ms at 90° (allows candy fall)
+settle_ms=500ms return to 0° (quick reset)
+Total cycle: ~2.1 seconds motion
+What could go wrong:
+Servo stall/jam—candy too big for pocket depth 
+Incomplete return—pocket stays partial-open, double-dispensing 
+Backlash—loose servo horn causes sloppy 90° alignment 
+Gravity hang-up—next candy doesn't load (solution: slight pocket tilt + vibration from settle delay)`
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
